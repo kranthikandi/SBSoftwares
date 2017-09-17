@@ -43,6 +43,13 @@ var todayDate = today.getMonth()+'/'+today.getDate()+'/'+today.getFullYear()+' '
 $("#scheduleHeader").append(todayDate);
 $("#calculateHeader").append(todayDate);
 
+
+$("#download").click(function(e) {
+    window.open('data:application/vnd.ms-excel,' + $('#empTable').html());
+    e.preventDefault();
+});
+
+
 window.onload = function() {
   L.mapquest.key = 'UShjaMayAC4UkuBJ5nu5rqFuraxzEOQU';
 
@@ -53,15 +60,72 @@ window.onload = function() {
   });
 
   L.marker([37.7749 , -122.4194 ], {
-    icon: L.mapquest.icons.marker(),
-    draggable: false
-  }).bindPopup('Denver, CO').addTo(map);
-  
-  L.marker([37.3688 , -122.0363 ], {
 	    icon: L.mapquest.icons.marker(),
 	    draggable: false
 	  }).bindPopup('Denver, CO').addTo(map);
+	  
+	  L.marker([37.381278, -122.137829 ], {
+		    icon: L.mapquest.icons.marker(),
+		    draggable: false
+		  }).bindPopup('Denver, CO').addTo(map);
 
+	  L.marker([37.267184, -122.009206 ], {
+	      icon: L.mapquest.icons.marker(),
+	      draggable: false
+	    }).bindPopup('Denver, CO').addTo(map);
+
+	  L.marker([37.390735, -121.989862 ], {
+	      icon: L.mapquest.icons.marker(),
+	      draggable: false
+	    }).bindPopup('Denver, CO').addTo(map);
+
+	  L.marker([37.374693, -121.982940 ], {
+	      icon: L.mapquest.icons.marker(),
+	      draggable: false
+	    }).bindPopup('Denver, CO').addTo(map);
+
+	  L.marker([37.377779, -122.062273 ], {
+	      icon: L.mapquest.icons.marker(),
+	      draggable: false
+	    }).bindPopup('Denver, CO').addTo(map);
+
+	  L.marker([37.405267, -121.917030 ], {
+	      icon: L.mapquest.icons.marker(),
+	      draggable: false
+	    }).bindPopup('Denver, CO').addTo(map);
+
+	  L.marker([37.346414, -121.961649], {
+	      icon: L.mapquest.icons.marker(),
+	      draggable: false
+	    }).bindPopup('Denver, CO').addTo(map);
+
+	  L.marker([37.321028, -121.908132], {
+	      icon: L.mapquest.icons.marker(),
+	      draggable: false
+	    }).bindPopup('Denver, CO').addTo(map);
+
+	  L.marker([37.322412, -122.068345], {
+	      icon: L.mapquest.icons.marker(),
+	      draggable: false
+	    }).bindPopup('Denver, CO').addTo(map);
   L.circle([37.4419 , -122.1430 ], { radius: 9000 }).addTo(map);
+
+  var scheduleMap = L.mapquest.map('scheduleMap', {
+	    center: [37.4419 , -122.14304 ],
+	    layers: L.mapquest.tileLayer('map'),
+	    zoom: 11
+	  });
+  scheduleMap.addLayer(L.mapquest.trafficLayer());
+  scheduleMap.addLayer(L.mapquest.incidentsLayer());
+  scheduleMap.addLayer(L.mapquest.marketsLayer());
+	  L.marker([37.7749 , -122.4194 ], {
+	    icon: L.mapquest.icons.marker(),
+	    draggable: false
+	  }).bindPopup('Denver, CO').addTo(scheduleMap);
+	  
+	  L.marker([37.3688 , -122.0363 ], {
+		    icon: L.mapquest.icons.marker(),
+		    draggable: false
+		  }).bindPopup('Denver, CO').addTo(scheduleMap);
 
 };
