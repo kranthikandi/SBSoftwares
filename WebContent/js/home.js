@@ -41,7 +41,7 @@ $("#calculate").click(function(){
 var today = new Date();
 var todayDate = today.getMonth()+'/'+today.getDate()+'/'+today.getFullYear()+' '+' '+' '+today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
 $("#scheduleHeader").append(todayDate);
-
+$("#calculateHeader").append(todayDate);
 
 window.onload = function() {
   L.mapquest.key = 'UShjaMayAC4UkuBJ5nu5rqFuraxzEOQU';
