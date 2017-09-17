@@ -1,4 +1,4 @@
-$("#calculate").click(function(){
+$("#calculateBtn").click(function(){
     
     var material = Number($("#material").val());
     var labour = Number($("#labour").val());
@@ -13,14 +13,43 @@ $("#calculate").click(function(){
     $("#total").val(final);
 });
 
+$("#estimate").click(function(){
+	$("#estimateDiv").show();
+	$("#scheduleDiv").hide();
+	$("#calculateDiv").hide();
+	$("#estimateLi").addClass("active");
+	$("#scheduleLi").removeClass("active")
+	$("#calculateLi").removeClass("active")
+});
+$("#schedule").click(function(){
+	$("#estimateDiv").hide();
+	$("#scheduleDiv").show();
+	$("#calculateDiv").hide();
+	$("#estimateLi").removeClass("active");
+	$("#scheduleLi").addClass("active")
+	$("#calculateLi").removeClass("active")
+});
+$("#calculate").click(function(){
+	$("#estimateDiv").hide();
+	$("#scheduleDiv").hide();
+	$("#calculateDiv").show();
+	$("#estimateLi").removeClass("active");
+	$("#scheduleLi").removeClass("active")
+	$("#calculateLi").addClass("active")
+});
+
+var today = new Date();
+var todayDate = today.getMonth()+'/'+today.getDate()+'/'+today.getFullYear()+' '+' '+' '+today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
+$("#scheduleHeader").append(todayDate);
+
 
 window.onload = function() {
   L.mapquest.key = 'UShjaMayAC4UkuBJ5nu5rqFuraxzEOQU';
 
   var map = L.mapquest.map('map', {
-    center: [37.7749 , -122.4194 ],
+    center: [37.4419 , -122.14304 ],
     layers: L.mapquest.tileLayer('map'),
-    zoom: 14
+    zoom: 11
   });
 
   L.marker([37.7749 , -122.4194 ], {
@@ -33,7 +62,6 @@ window.onload = function() {
 	    draggable: false
 	  }).bindPopup('Denver, CO').addTo(map);
 
-  L.circle([37.7749 , -122.4194 ], { radius: 1000 }).addTo(map);
+  L.circle([37.4419 , -122.1430 ], { radius: 9000 }).addTo(map);
 
-  L.polygon(denverLatLngs, {color: 'red'}).addTo(map);
 };
