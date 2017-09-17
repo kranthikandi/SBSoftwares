@@ -20,7 +20,7 @@ window.onload = function() {
   var map = L.mapquest.map('map', {
     center: [37.7749 , -122.4194 ],
     layers: L.mapquest.tileLayer('map'),
-    zoom: 6
+    zoom: 14
   });
 
   L.marker([37.7749 , -122.4194 ], {
@@ -33,14 +33,7 @@ window.onload = function() {
 	    draggable: false
 	  }).bindPopup('Denver, CO').addTo(map);
 
-  L.circle([37.7749 , -122.4194 ], { radius: 20000 }).addTo(map);
-
-  var denverLatLngs = [
-    [36.99, -102.05],
-    [37, -109.05],
-    [41, -109.05],
-    [41, -102.05]
-  ];
+  L.circle([37.7749 , -122.4194 ], { radius: 1000 }).addTo(map);
 
   L.polygon(denverLatLngs, {color: 'red'}).addTo(map);
 };
